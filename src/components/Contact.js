@@ -5,11 +5,23 @@ class Contact extends Component {
   static propTypes = {
     contact: PropTypes.object.isRequired
   };
+
+  state = {};
+
+  onShowClick() {
+    console["log"](this.state);
+  }
   render() {
     const { contact } = this.props;
     return (
       <div className="card card-body mb-3">
-        <h4>{contact.name}</h4>
+        <h4>
+          {contact.name}{" "}
+          <i
+            onClick={this.onShowClick.bind(this)}
+            className="fas fa-sort-down"
+          />
+        </h4>
         <ul className="list-group">
           <li className="list-group-item">Email: {contact.email}</li>
           <li className="list-group-item">Phone: {contact.phone}</li>
