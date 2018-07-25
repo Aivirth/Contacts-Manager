@@ -6,7 +6,11 @@ class Contact extends Component {
     contact: PropTypes.object.isRequired
   };
 
-  state = {};
+  constructor() {
+    super();
+    this.state = {};
+    this.onShowClick = this.onShowClick.bind(this);
+  }
 
   onShowClick() {
     console["log"](this.state);
@@ -17,10 +21,7 @@ class Contact extends Component {
       <div className="card card-body mb-3">
         <h4>
           {contact.name}{" "}
-          <i
-            onClick={this.onShowClick.bind(this)}
-            className="fas fa-sort-down"
-          />
+          <i onClick={this.onShowClick} className="fas fa-sort-down" />
         </h4>
         <ul className="list-group">
           <li className="list-group-item">Email: {contact.email}</li>
