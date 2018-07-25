@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 
 class Contact extends Component {
   static propTypes = {
-    name: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired
+    contact: PropTypes.object.isRequired
   };
   render() {
     const { contact } = this.props;
