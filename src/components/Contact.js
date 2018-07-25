@@ -6,15 +6,11 @@ class Contact extends Component {
     contact: PropTypes.object.isRequired
   };
 
-  constructor() {
-    super();
-    this.state = {};
-    this.onShowClick = this.onShowClick.bind(this);
-  }
+  state = {};
 
-  onShowClick() {
+  onShowClick = () => {
     console["log"](this.state);
-  }
+  };
   render() {
     const { contact } = this.props;
     return (
