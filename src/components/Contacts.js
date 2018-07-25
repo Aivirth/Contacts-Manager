@@ -28,11 +28,11 @@ export default class Contacts extends Component {
   render() {
     const { contacts } = this.state;
     return (
-      <div>
+      <React.Fragment>
         {contacts.map(contact => (
           <Contact contact={contact} key={contact.id} />
         ))}
-      </div>
+      </React.Fragment>
     );
   }
 }
