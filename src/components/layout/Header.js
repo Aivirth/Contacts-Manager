@@ -1,14 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// export default () => {
-//   return (
-//     <div>
-//       <h1>Contact Manager</h1>
-//     </div>
-//   );
-// };
-
 const Header = props => {
   const { branding } = props;
   return (
@@ -26,8 +18,13 @@ const Header = props => {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#1" className="nav-link">
-                  Lorem
+                <a href="/about" className="nav-link">
+                  About
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="/contact/add" className="nav-link">
+                  Add
                 </a>
               </li>
             </ul>
