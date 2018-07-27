@@ -8,14 +8,16 @@ export default class AddContact extends Component {
     name: "",
     email: "",
     phone: "",
+    website: "",
     errors: {}
   };
 
+  //fetch all data from form fields to state
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   onSubmit = (dispatch, e) => {
     e.preventDefault();
-    const { name, email, phone } = this.state;
+    const { name, email, phone, website } = this.state;
 
     //Check for errors
     if (name === "") {
@@ -30,11 +32,18 @@ export default class AddContact extends Component {
       this.setState({ errors: { phone: "Name is Required" } });
       return;
     }
+    if (website === "") {
+      this.setState({
+        website: "No website"
+      });
+      return;
+    }
 
     const newContact = {
       name,
       email,
-      phone
+      phone,
+      website
     };
 
     axios
@@ -47,6 +56,7 @@ export default class AddContact extends Component {
       name: "",
       email: "",
       phone: "",
+      website: "",
       errors: {}
     });
 
@@ -55,7 +65,7 @@ export default class AddContact extends Component {
   };
 
   render() {
-    const { name, email, phone, errors } = this.state;
+    const { name, email, phone, errors, website } = this.state;
     return (
       <Consumer>
         {value => {
@@ -91,6 +101,14 @@ export default class AddContact extends Component {
                     value={phone}
                     onChange={this.onChange}
                     error={errors.phone}
+                  />
+
+                  <TextInputGroup
+                    label="Website"
+                    name="website"
+                    placeholder="Enter Website"
+                    value={website}
+                    onChange={this.onChange}
                   />
 
                   <input
