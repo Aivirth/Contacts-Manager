@@ -25,6 +25,7 @@ class Contact extends Component {
       dispatch({ type: "DELETE_CONTACT", payload: id });
     } catch (error) {
       console.log(error);
+      dispatch({ type: "DELETE_CONTACT", payload: id });
     }
   };
 
