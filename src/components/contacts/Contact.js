@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Consumer } from "../../context";
+import axios from "axios";
+
 class Contact extends Component {
   static propTypes = {
     contact: PropTypes.object.isRequired
@@ -17,7 +19,10 @@ class Contact extends Component {
   };
 
   onDeleteClick = (id, dispatch) => {
-    dispatch({ type: "DELETE_CONTACT", payload: id });
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then(res => dispatch({ type: "DELETE_CONTACT", payload: id }))
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -46,6 +51,9 @@ class Contact extends Component {
                 <ul className="list-group">
                   <li className="list-group-item">Email: {contact.email}</li>
                   <li className="list-group-item">Phone: {contact.phone}</li>
+                  <li className="list-group-item">
+                    Website: {contact.website}
+                  </li>
                 </ul>
               ) : null}
             </div>
