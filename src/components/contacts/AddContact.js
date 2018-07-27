@@ -47,6 +47,9 @@ export default class AddContact extends Component {
       phone: "",
       errors: {}
     });
+
+    //Redirect router to home
+    this.props.history.push("/");
   };
 
   render() {
