@@ -15,7 +15,7 @@ export default class AddContact extends Component {
   //fetch all data from form fields to state
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  onSubmit = (dispatch, e) => {
+  onSubmit = async (dispatch, e) => {
     e.preventDefault();
     const { name, email, phone, website } = this.state;
 
@@ -46,10 +46,16 @@ export default class AddContact extends Component {
       website
     };
 
-    axios
-      .post("https://jsonplaceholder.typicode.com/users", newContact)
-      .then(res => dispatch({ type: "ADD_CONTACT", payload: res.data }))
-      .catch(err => console.log(err));
+    try {
+      const res = await axios.post(
+        "https://jsonplaceholder.typicode.com/users",
+        newContact
+      );
+
+      dispatch({ type: "ADD_CONTACT", payload: res.data });
+    } catch (error) {
+      console.log(error);
+    }
 
     //Clear state
     this.setState({

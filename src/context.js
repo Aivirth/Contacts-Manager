@@ -29,15 +29,16 @@ export class Provider extends Component {
     }
   };
 
-  componentDidMount() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then(res =>
-        this.setState({
-          contacts: res.data
-        })
-      )
-      .catch(err => console.log(err));
+  async componentDidMount() {
+    try {
+      const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+
+      this.setState({
+        contacts: res.data
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {
