@@ -4,7 +4,6 @@ import TextInputGroup from "../layout/TextInputGroup";
 import axios from "axios";
 
 export default class EditContact extends Component {
-
   state = {
     name: "",
     email: "",
@@ -13,23 +12,22 @@ export default class EditContact extends Component {
     errors: {}
   };
 
-  async componentDidMount(){
-    
-    try{
-      const {id} = this.props.match.params;
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+  async componentDidMount() {
+    try {
+      const { id } = this.props.match.params;
+      const res = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/${id}`
+      );
       const contact = res.data;
 
       this.setState({
         name: contact.name,
         email: contact.email,
         phone: contact.phone,
-        website: contact.website,
-
-      })
-
-    }catch(err){
-      console.log(err)
+        website: contact.website
+      });
+    } catch (err) {
+      console.log(err);
     }
   }
 
@@ -59,6 +57,20 @@ export default class EditContact extends Component {
       });
       return;
     }
+
+    const updContact = {
+      name,
+      email,
+      phone,
+      website
+    };
+
+    const { id } = this.props.match.params;
+    const res = await axios.put(
+      `https://jsonplaceholder.typicode.com/users/${id}`,
+      updContact
+    );
+    dispatch({ type: "UPDATE_CONTACT", payload: res.data });
 
     //Clear state
     this.setState({
