@@ -7,6 +7,7 @@ export default () => {
       <p className="lead">
         Simple app to manage content<br />Tutorial Project
       </p>
+      <p className="lead">License: MIT</p>
       <p className="text-secodnary">Version 1.0.0</p>
     </div>
   );
